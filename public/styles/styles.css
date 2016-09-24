@@ -1,10 +1,46 @@
 body {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  background-color: skyblue; /* Sanity Check! */
+  /*background-image: url("http://cdn-media-2.lifehack.org/wp-content/files/2015/05/books-1.jpg");*/
+  background-size: cover;
 }
 
 h1 {
   margin-top: 100px;
   text-align: center;
 }
+
+#container{
+	background-color: white;
+	opacity: 1;
+}
+
+.book-cover{
+	height: 70px;
+	width: 50px;
+}
+
+.book-row{
+	display: inline-block;
+}
+
+h3{
+	display: inline-block;
+}
+
+.pull-right a {
+  color: #000;
+  cursor: pointer;
+  display: inline-block;
+  margin: 3px 5px 0 0;
+  opacity: 0.2;
+}
+.pull-right a:hover {
+  color: #000;
+  opacity: 0.5;
+}
+
+/*Berks!
+
+https://cdn.meme.am/instances/500x/23062589.jpg
+*/

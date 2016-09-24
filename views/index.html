@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
+    <title>My Books Website</title>
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -19,11 +19,64 @@
   </head>
   <body>
     <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
-          <h4><a href="/api">Read My API Documentation</a></h4>
-        </div>
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Berks</h1>
+        <!-- new berk form-->
+        <form class="form-inline" id="create-book">
+          <div class="form-group">
+            <input type="text" name="title" class="form-control" placeholder="Book Title" autofocus>
+          </div>
+          <div class="form-group">
+            <input type="text" name="author" class="form-control" placeholder="Author">
+          </div>
+          <div class="form-group">
+            <input type="text" name="image" class="form-control" placeholder="Image url">
+          </div>
+          <div class="form-group">
+            <input type="submit" class="btn btn-default" value="Add a berk!">
+          </div>
+        </form>
+        <br>
+
+        <ul class="list-group" id="books-list">
+          <script id="books-template" type="text/x-handlebars-template">
+            {{#each books}}
+              <li class="list-group-item books" data-id="{{_id}}">
+                <div class="book-row">
+                  <h3>{{title}} by {{author}}</h3>
+                  <img class="book-cover" src="{{image}}">
+
+                    <div class="pull-right">
+                    <!-- pencil icon to toggle update form -->
+                    <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-{{_id}}" class="update-books">
+                      <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+
+                    <!-- trash can icon to delete book -->
+                     <a href="javascript:void(0)" class="delete-books">
+                      <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                  </div>  
+                </div>  
+                <div id="update-{{_id}}" class="collapse">  
+                  <br>
+                  <form class="form-inline update-books">
+                    <div class="form-group">
+                      <input type="text" name="title" class="form-control" placeholder="Title" value="{{title}}">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" name="author" class="form-control" placeholder="Author" value="{{author}}">
+                    </div>
+                    <div class="form-group">
+                      <input type="submit" class="btn btn-block btn-default" value="Update">
+                    </div>
+                  </form>
+                </div>
+              </li>
+            {{/each}}
+          </script>
+        </ul>
+        <h4><a href="/api">Read My API Documentation</a></h4>
       </div>
     </div>
   </body>

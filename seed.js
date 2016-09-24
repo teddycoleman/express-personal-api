@@ -1,15 +1,13 @@
 // This file allows us to seed our application with data
 // simply run: `node seed.js` from the root of this project folder.
 
-// var db = require('./models');
+var db = require('./models');
 
-// var new_campsite = {description: "Sharp rocks. Middle of nowhere."}
+var newBook = new db.Book({
+	title: "Infinite Jest",
+	author: "David Foster Wallace",
+	image: "https://images-na.ssl-images-amazon.com/images/I/81a3oM3EcfL.jpg",
+	releaseDate: "Feb 1, 1996"
+});
 
-// db.Campsite.create(new_campsite, function(err, campsite){
-//   if (err){
-//     return console.log("Error:", err);
-//   }
-
-//   console.log("Created new campsite", campsite._id)
-//   process.exit(); // we're all done! Exit the program.
-// })
+newBook.save();

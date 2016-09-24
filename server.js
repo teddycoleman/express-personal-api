@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
  * DATABASE *
  ************/
 
-// var db = require('./models');
+var db = require('./models');
 
 /**********
  * ROUTES *
@@ -45,7 +45,6 @@ app.get('/', function homepage(req, res) {
 app.get('/api', function api_index(req, res) {
   // TODO: Document all your api endpoints below
   res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
     message: "Welcome to my personal api! Here's what you need to know!",
     documentationUrl: "https://github.com/example-username/express_self_api/README.md", // CHANGE ME
     baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
@@ -56,6 +55,76 @@ app.get('/api', function api_index(req, res) {
     ]
   })
 });
+
+
+/*
+ * Profile Endpoint
+ */
+
+app.get('/api/profile', function api_index(req, res) {
+  // TODO: Document all your api endpoints below
+  res.json({
+    name: "Teddy Coleman",
+    gitHubLink: "https://github.com/teddycoleman",
+    githubProfileImage: "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/5/005/070/247/2138349.jpg",
+    personalSiteLink: "https://www.linkedin.com/in/teddy-coleman-1328999a",
+    currentCity: "San Francisco",
+    pets: "Can't wait to get a dog!"
+  })
+});
+
+/*
+ * Books Endpoint
+ */
+
+//Index api
+app.get('/api/books', function(request,response){
+  db.Book.find({}, function(err,books){
+    response.send(books);
+  });
+});
+
+//Show api
+app.get('/api/books/:id', function(request,response){
+  db.Book.findOne({_id: request.params.id}, function(err,book){
+    response.send(book);
+  });
+});
+
+//Create api
+app.post('/api/books/', function(request,response){
+  console.log(request.body);
+  var newBook = new db.Book({
+    title: request.body.title,
+    author: request.body.author,
+    image: request.body.image,
+    releaseDate: request.body.releaseDate
+  });
+  newBook.save();
+  response.send(newBook);
+});
+
+//Update api
+app.put('/api/books/:id', function(request,response){
+  db.Book.findOne({_id: request.params.id}, function(err,book){
+    book.title = request.body.title || book.title;
+    book.author = request.body.author || book.author;
+    book.image = request.body.image || book.image;
+    book.releaseDate = request.body.releaseDate || book.releaseDate;
+    book.save(function(err,book){
+      response.send(book);
+    })
+  });
+});
+
+//Delete api
+app.delete('/api/books/:id', function(request,response){
+  db.Book.findOneAndRemove({_id: request.params.id}, function(err,book){
+    if(err){console.log(err)};
+  });
+  response.send(204);
+});
+
 
 /**********
  * SERVER *
