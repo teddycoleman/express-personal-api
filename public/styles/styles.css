@@ -1,18 +1,16 @@
 body {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  /*background-image: url("http://cdn-media-2.lifehack.org/wp-content/files/2015/05/books-1.jpg");*/
+  background-image: url("http://cdn-media-2.lifehack.org/wp-content/files/2015/05/books-1.jpg");
   background-size: cover;
+  font-family: 'Yatra One', cursive;
 }
 
 h1 {
   margin-top: 100px;
   text-align: center;
-}
-
-#container{
-	background-color: white;
-	opacity: 1;
+  font-size: 48px;
+  color: white;
 }
 
 .book-cover{
@@ -21,12 +19,13 @@ h1 {
 }
 
 .book-row{
+	display: block;
+}
+
+h4{
 	display: inline-block;
 }
 
-h3{
-	display: inline-block;
-}
 
 .pull-right a {
   color: #000;
@@ -34,6 +33,7 @@ h3{
   display: inline-block;
   margin: 3px 5px 0 0;
   opacity: 0.2;
+  float: right !important;
 }
 .pull-right a:hover {
   color: #000;

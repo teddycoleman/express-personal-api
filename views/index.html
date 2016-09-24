@@ -9,6 +9,7 @@
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Yatra+One" rel="stylesheet">
 
     <!-- VENDOR SCRIPTS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
@@ -19,7 +20,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="col-md-8 col-md-offset-2">
+      <div class="col-md-8 col-md-offset-2 center">
         <h1>Berks</h1>
         <!-- new berk form-->
         <form class="form-inline" id="create-book">
@@ -43,14 +44,9 @@
             {{#each books}}
               <li class="list-group-item books" data-id="{{_id}}">
                 <div class="book-row">
-                  <h3>{{title}} by {{author}}</h3>
-                  <img class="book-cover" src="{{image}}">
-
-                    <div class="pull-right">
-                    <!-- pencil icon to toggle update form -->
-                    <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-{{_id}}" class="update-books">
-                      <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
+                  <h4>{{title}} by {{author}}</h4>
+                  <div class="pull-right">
+                    <img class="book-cover" src="{{image}}">
 
                     <!-- trash can icon to delete book -->
                      <a href="javascript:void(0)" class="delete-books">
@@ -58,7 +54,7 @@
                     </a>
                   </div>  
                 </div>  
-                <div id="update-{{_id}}" class="collapse">  
+                <div id="update-{{_id}}">  
                   <br>
                   <form class="form-inline update-books">
                     <div class="form-group">
@@ -66,6 +62,9 @@
                     </div>
                     <div class="form-group">
                       <input type="text" name="author" class="form-control" placeholder="Author" value="{{author}}">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" name="image" class="form-control" placeholder="Image url" value="{{image}}">
                     </div>
                     <div class="form-group">
                       <input type="submit" class="btn btn-block btn-default" value="Update">
