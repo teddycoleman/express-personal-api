@@ -46,8 +46,8 @@ app.get('/api', function api_index(req, res) {
   // TODO: Document all your api endpoints below
   res.json({
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/example-username/express_self_api/README.md", // CHANGE ME
-    baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
+    documentationUrl: "https://github.com/teddycoleman/express-personal-api/README.md",
+    baseUrl: "https://young-island-98436.herokuapp.com/", 
     endpoints: [
       {method: "GET", 
         path: "/api", 
