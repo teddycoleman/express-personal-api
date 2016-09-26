@@ -21,7 +21,15 @@
   <body>
     <div class="container">
       <div class="col-md-8 col-md-offset-2 center">
-        <h1>Berks</h1>
+        <div class="profile" id="profile">
+          <script id="profile-template" type="text/x-handlebars-template">
+          {{#each profile}}
+            <h1> Hi, I'm {{name}}. Check out all my favorite berks!</h1>
+            <img src='https://cdn.meme.am/instances/500x/23062589.jpg'>
+          {{/each}}
+          </script>
+        </div>
+
         <!-- new berk form-->
         <form class="form-inline" id="create-book">
           <div class="form-group">

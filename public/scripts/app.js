@@ -7,8 +7,13 @@ $(document).ready(function(){
 	var $booksList = $('#books-list');
 	var $createBook = $('#create-book');
 
+	//Templating for the books list
 	var source = $('#books-template').html();
 	var template = Handlebars.compile(source);
+
+	//Templating for the profile 
+	var profileSource = $('#profile-template').html();
+	var profileTemplate = Handlebars.compile(profileSource);
 
     function render() {
       // empty existing todos from view
@@ -16,6 +21,7 @@ $(document).ready(function(){
 
       // pass `allbooks` into the template function
       var booksHtml = template({ books: allBooks });
+
       // append html to the view
       $booksList.append(booksHtml);
     };
@@ -24,9 +30,10 @@ $(document).ready(function(){
 	$.ajax({
 		method: "GET",
 		url: "/api/profile/",
-		success: function onLoadAllBooks(json){
-			var aboutMe = $("<h2> Hi I'm "+json.name+". Check out all my favorite berks!</h2><img src='https://cdn.meme.am/instances/500x/23062589.jpg'>");
-			$('h1').append(aboutMe);
+		success: function onLoadProfile(profile){
+			var profileArray = [profile];
+			var aboutMe = profileTemplate({profile: profileArray});
+			$('#profile').append(aboutMe);
 		}
 	});
 

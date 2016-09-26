@@ -49,13 +49,64 @@ app.get('/api', function api_index(req, res) {
     documentationUrl: "https://github.com/example-username/express_self_api/README.md", // CHANGE ME
     baseUrl: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
     endpoints: [
-      {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "GET", 
+        path: "/api", 
+        description: "Describes all available endpoints", 
+        produces: ["application/json"], 
+        "responses":{
+          "200":{
+            description:"a list of books", "schema":{
+              type:"object"}
+          }
+        }
+      },
+      {method: "GET", 
+        path: "/api/profile", 
+        description: "Grabs information for my profile", 
+        produces: ["application/json"], 
+        "responses":{
+          "200":{
+            description:"information about me", "schema":{
+              type:"object"}
+          }
+        }
+      }, 
+      {method: "POST", 
+        path: "/api/books", 
+        description: "Create a new favorite book",
+        produces: ["application/json"], 
+        "responses":{
+          "200":{
+            description:"new book added", "schema":{
+              type:"object"}
+          }
+        }
+      },
+      {method: "POST", 
+        path: "/api/books/:id", 
+        description: "Update an existing favorite book",
+        produces: ["application/json"], 
+        "responses":{
+          "200":{
+            description:"update existing book", "schema":{
+              type:"object"}
+          }
+        }
+      },
+      {method: "DELETE", 
+        path: "/api/books/:id", 
+        description: "Delete an existing favorite book",
+        produces: "204", 
+        "responses":{
+          "200":{
+            description:"delete existing book", "schema":{
+              type:"object"}
+          }
+        }
+      } 
     ]
   })
 });
-
 
 /*
  * Profile Endpoint
